@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チーム東海（三重BBQ in 多度）出欠確認</title>
+    <meta name="description" content="チーム東海 三重BBQ in 多度 の出欠確認フォームです。2026年4月26日（日）多度グリーンファームにて開催。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 装飾パーティクル -->
+    <div class="particles" aria-hidden="true">
+        <span class="particle">🔥</span>
+        <span class="particle">🍖</span>
+        <span class="particle">🌿</span>
+        <span class="particle">🍺</span>
+        <span class="particle">🌽</span>
+        <span class="particle">☀️</span>
+        <span class="particle">🥩</span>
+        <span class="particle">🍡</span>
+    </div>
+
+    <div class="container">
+        <!-- ヘッダーセクション -->
+        <header class="hero">
+            <div class="hero-badge">🔥 BBQ EVENT 🔥</div>
+            <h1 class="hero-title">チーム東海<br><span class="highlight">三重BBQ in 多度</span></h1>
+            <p class="hero-subtitle">出欠確認フォーム</p>
+        </header>
+
+        <!-- イベント情報カード -->
+        <section class="info-card" aria-label="イベント情報">
+            <h2 class="section-title">📋 イベント情報</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon">📅</div>
+                    <div class="info-content">
+                        <span class="info-label">日時</span>
+                        <span class="info-value">2026年4月26日（日）</span>
+                        <span class="info-detail">10:00 ～ 16:00</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <span class="info-label">場所</span>
+                        <span class="info-value">多度グリーンファーム</span>
+                        <a href="https://tado15.com/" target="_blank" rel="noopener noreferrer" class="info-link">🌐
+                            公式サイトを見る</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">💰</div>
+                    <div class="info-content">
+                        <span class="info-label">会費</span>
+                        <div class="fee-list">
+                            <span class="fee-item"><span class="fee-tag">大人</span> 5,500円</span>
+                            <span class="fee-item"><span class="fee-tag">小・中学生</span> 1,500円</span>
+                            <span class="fee-item"><span class="fee-tag free">幼児</span> 無料</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 主目的カード -->
+        <section class="purpose-card" aria-label="イベントの主目的">
+            <h2 class="section-title">💬 今回の主目的</h2>
+            <div class="purpose-content">
+                <p>三重県の仲間に会いに行く！</p>
+                <ul class="purpose-list">
+                    <li>名古屋の開催では、なかなか参加できない三重県在住の仲間に<strong>こちらから会いに行く</strong></li>
+                    <li>日頃の<strong>お礼を伝える</strong></li>
+                    <li><strong>つながりを深める</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 出欠確認フォーム -->
+        <section class="form-card" aria-label="出欠確認フォーム">
+            <h2 class="section-title">✏️ 出欠確認</h2>
+            <form id="rsvpForm" novalidate>
+                <!-- お名前 -->
+                <div class="form-group">
+                    <label for="name" class="form-label">
+                        お名前 <span class="required">必須</span>
+                    </label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="例：山田 太郎" required>
+                    <span class="error-message" id="nameError">お名前を入力してください</span>
+                </div>
+
+                <!-- 出欠 -->
+                <div class="form-group">
+                    <label class="form-label">
+                        出欠 <span class="required">必須</span>
+                    </label>
+                    <div class="radio-group">
+                        <label class="radio-card" for="attend-yes">
+                            <input type="radio" id="attend-yes" name="attendance" value="出席" required>
+                            <div class="radio-card-content">
+                                <span class="radio-emoji">🙋</span>
+                                <span class="radio-text">出席</span>
+                            </div>
+                        </label>
+                        <label class="radio-card" for="attend-no">
+                            <input type="radio" id="attend-no" name="attendance" value="欠席" required>
+                            <div class="radio-card-content">
+                                <span class="radio-emoji">😢</span>
+                                <span class="radio-text">欠席</span>
+                            </div>
+                        </label>
+                    </div>
+                    <span class="error-message" id="attendanceError">出欠を選択してください</span>
+                </div>
+
+                <!-- 出席時のみ表示される項目 -->
+                <div id="attendDetails" class="attend-details hidden">
+                    <!-- 参加人数 -->
+                    <div class="form-group">
+                        <label class="form-label">👥 参加人数</label>
+                        <div class="count-grid">
+                            <div class="count-item">
+                                <label for="adultCount">大人</label>
+                                <select id="adultCount" name="adultCount" class="form-select">
+                                    <option value="1">1名</option>
+                                    <option value="2">2名</option>
+                                    <option value="3">3名</option>
+                                    <option value="4">4名</option>
+                                    <option value="5">5名</option>
+                                    <option value="6">6名</option>
+                                    <option value="7">7名</option>
+                                    <option value="8">8名</option>
+                                    <option value="9">9名</option>
+                                    <option value="10">10名</option>
+                                </select>
+                            </div>
+                            <div class="count-item">
+                                <label for="childCount">小・中学生</label>
+                                <select id="childCount" name="childCount" class="form-select">
+                                    <option value="0">0名</option>
+                                    <option value="1">1名</option>
+                                    <option value="2">2名</option>
+                                    <option value="3">3名</option>
+                                    <option value="4">4名</option>
+                                    <option value="5">5名</option>
+                                    <option value="6">6名</option>
+                                    <option value="7">7名</option>
+                                    <option value="8">8名</option>
+                                    <option value="9">9名</option>
+                                    <option value="10">10名</option>
+                                </select>
+                            </div>
+                            <div class="count-item">
+                                <label for="infantCount">幼児</label>
+                                <select id="infantCount" name="infantCount" class="form-select">
+                                    <option value="0">0名</option>
+                                    <option value="1">1名</option>
+                                    <option value="2">2名</option>
+                                    <option value="3">3名</option>
+                                    <option value="4">4名</option>
+                                    <option value="5">5名</option>
+                                    <option value="6">6名</option>
+                                    <option value="7">7名</option>
+                                    <option value="8">8名</option>
+                                    <option value="9">9名</option>
+                                    <option value="10">10名</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- アレルギー -->
+                    <div class="form-group">
+                        <label class="form-label">⚠️ 食物アレルギー</label>
+                        <div class="radio-group radio-group-small">
+                            <label class="radio-card radio-card-sm" for="allergy-no">
+                                <input type="radio" id="allergy-no" name="allergy" value="なし" checked>
+                                <div class="radio-card-content">
+                                    <span class="radio-text">なし</span>
+                                </div>
+                            </label>
+                            <label class="radio-card radio-card-sm" for="allergy-yes">
+                                <input type="radio" id="allergy-yes" name="allergy" value="あり">
+                                <div class="radio-card-content">
+                                    <span class="radio-text">あり</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div id="allergyDetail" class="sub-detail hidden">
+                            <label for="allergyText" class="form-label-sub">アレルギーの詳細を教えてください</label>
+                            <input type="text" id="allergyText" name="allergyText" class="form-input"
+                                placeholder="例：エビ、カニ、卵など">
+                        </div>
+                    </div>
+
+                    <!-- 飲み物 -->
+                    <div class="form-group">
+                        <label class="form-label">🍹 飲み物（350ml缶 換算）</label>
+                        <p class="form-hint">おおよその目安でOKです！買い出しの参考にします。</p>
+                        <div class="drink-grid">
+                            <div class="drink-item">
+                                <div class="drink-icon">🥤</div>
+                                <label for="softDrinkCount">ソフトドリンク</label>
+                                <select id="softDrinkCount" name="softDrinkCount" class="form-select">
+                                    <option value="0">0本</option>
+                                    <option value="1">1本</option>
+                                    <option value="2">2本</option>
+                                    <option value="3" selected>3本</option>
+                                    <option value="4">4本</option>
+                                    <option value="5">5本</option>
+                                    <option value="6">6本</option>
+                                    <option value="7">7本</option>
+                                    <option value="8">8本</option>
+                                    <option value="9">9本</option>
+                                    <option value="10">10本</option>
+                                </select>
+                            </div>
+                            <div class="drink-item">
+                                <div class="drink-icon">🍺</div>
+                                <label for="alcoholCount">アルコール</label>
+                                <select id="alcoholCount" name="alcoholCount" class="form-select">
+                                    <option value="0">0本</option>
+                                    <option value="1">1本</option>
+                                    <option value="2">2本</option>
+                                    <option value="3" selected>3本</option>
+                                    <option value="4">4本</option>
+                                    <option value="5">5本</option>
+                                    <option value="6">6本</option>
+                                    <option value="7">7本</option>
+                                    <option value="8">8本</option>
+                                    <option value="9">9本</option>
+                                    <option value="10">10本</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 連絡事項 -->
+                <div class="form-group">
+                    <label for="notes" class="form-label">📝 連絡事項・備考</label>
+                    <textarea id="notes" name="notes" class="form-textarea" rows="3"
+                        placeholder="何かあればご記入ください（任意）"></textarea>
+                </div>
+
+                <!-- 送信ボタン -->
+                <button type="submit" id="submitBtn" class="submit-btn">
+                    <span class="btn-text">回答を送信する 🚀</span>
+                    <span class="btn-loading hidden">送信中...</span>
+                </button>
+            </form>
+        </section>
+
+        <!-- 送信完了メッセージ -->
+        <section id="successMessage" class="success-card hidden" aria-label="送信完了">
+            <div class="success-icon">🎉</div>
+            <h2 class="success-title">回答ありがとうございます！</h2>
+            <p class="success-text">出欠確認を受け付けました。<br>当日お会いできるのを楽しみにしています！🍖🔥</p>
+            <button id="resetBtn" class="reset-btn">もう一度回答する</button>
+        </section>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <p>チーム東海 🏮 三重BBQ in 多度 2026</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
