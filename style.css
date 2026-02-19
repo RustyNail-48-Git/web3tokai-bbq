@@ -1,5 +1,5 @@
 /* ===================================
-   BBQ出欠確認フォーム - スタイル
+   BBQ参加申込みフォーム - スタイル
    =================================== */
 
 /* ---------- CSS Variables ---------- */
@@ -208,7 +208,7 @@ body {
 
 /* ---------- Cards ---------- */
 .info-card,
-.purpose-card,
+.cancel-card,
 .form-card,
 .success-card {
     background: var(--color-card-bg);
@@ -227,7 +227,7 @@ body {
     animation-delay: 0.1s;
 }
 
-.purpose-card {
+.cancel-card {
     animation-delay: 0.2s;
 }
 
@@ -317,6 +317,30 @@ body {
     color: var(--color-accent);
 }
 
+.info-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+/* Checkbox category large */
+.checkbox-group-category {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.checkbox-item-lg {
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    text-align: center;
+}
+
+.checkbox-item-lg .checkbox-text {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 /* Fee list */
 .fee-list {
     display: flex;
@@ -345,39 +369,170 @@ body {
     color: var(--color-green-light);
 }
 
-/* ---------- Purpose ---------- */
-.purpose-content p {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--color-accent);
+/* ---------- Cancel Card ---------- */
+.cancel-content {
+    padding: 0;
 }
 
-.purpose-list {
-    list-style: none;
+.cancel-intro {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+}
+
+.cancel-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 16px;
 }
 
-.purpose-list li {
-    position: relative;
-    padding-left: 24px;
-    font-size: 0.95rem;
-    line-height: 1.6;
+.cancel-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--color-input-bg);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-input-border);
+}
+
+.cancel-item-full {
+    border-color: rgba(255, 82, 82, 0.3);
+    background: rgba(255, 82, 82, 0.08);
+}
+
+.cancel-period {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.cancel-fee {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.cancel-note {
+    font-size: 0.8rem;
     color: var(--color-text-muted);
+    line-height: 1.7;
 }
 
-.purpose-list li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-weight: 700;
+.warning-text {
+    color: var(--color-error) !important;
+    font-weight: 600;
 }
 
-.purpose-list li strong {
+/* ---------- Agreement ---------- */
+.agreement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.agreement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.agreement-item:hover {
+    border-color: rgba(255, 107, 53, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.agreement-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.agreement-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
     color: var(--color-text);
+}
+
+/* ---------- Form Sections ---------- */
+.form-divider {
+    border: none;
+    border-top: 1px solid var(--color-card-border);
+    margin: 32px 0 24px;
+}
+
+.form-section-heading {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-accent);
+}
+
+.form-footer-note {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 12px;
+    background: var(--color-input-bg);
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--color-input-border);
+}
+
+/* ---------- Checkbox Group ---------- */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.checkbox-item:hover {
+    border-color: rgba(255, 107, 53, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.checkbox-item input[type="checkbox"]:checked+.checkbox-text {
+    color: var(--color-primary-light);
+}
+
+.checkbox-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ---------- Count Grid Single ---------- */
+.count-grid-single {
+    grid-template-columns: 1fr;
+    max-width: 180px;
 }
 
 /* ---------- Form ---------- */
@@ -806,7 +961,7 @@ body {
     }
 
     .info-card,
-    .purpose-card,
+    .cancel-card,
     .form-card,
     .success-card {
         padding: 22px 18px;
@@ -818,9 +973,18 @@ body {
         gap: 8px;
     }
 
-    .drink-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .cancel-item {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+    }
+
+    .radio-group {
+        grid-template-columns: 1fr;
     }
 
     .radio-card-content {
