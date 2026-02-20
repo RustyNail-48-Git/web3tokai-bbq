@@ -105,11 +105,11 @@
                 <div class="cancel-list">
                     <div class="cancel-item">
                         <span class="cancel-period">ご予約日の7日前〜3日前</span>
-                        <span class="cancel-fee"><strong>500円／人</strong></span>
+                        <span class="cancel-fee"><strong>施設利用料の50％</strong></span>
                     </div>
                     <div class="cancel-item cancel-item-full">
                         <span class="cancel-period">前々日・前日・当日</span>
-                        <span class="cancel-fee"><strong>1,000円／人</strong></span>
+                        <span class="cancel-fee"><strong>施設利用料の100％</strong></span>
                     </div>
                 </div>
                 <p class="cancel-note">※人数確定後のキャンセルは、上記実費をご負担いただく場合があります。<br>あらかじめご了承のうえ、お申し込みください。</p>
@@ -126,7 +126,7 @@
                     <label class="form-label">
                         📌 同意事項 <span class="required">必須</span>
                     </label>
-                    <p class="form-hint">以下すべてにチェックを入れてください。</p>
+                    <p class="form-hint">以下の同意事項を確認してください。</p>
                     <div class="agreement-list">
                         <label class="agreement-item" for="agree1">
                             <input type="checkbox" id="agree1" name="agree1" required>
@@ -136,12 +136,29 @@
                             <input type="checkbox" id="agree2" name="agree2" required>
                             <span class="agreement-text">キャンセル規定を了承します</span>
                         </label>
-                        <label class="agreement-item" for="agree3">
-                            <input type="checkbox" id="agree3" name="agree3" required>
-                            <span class="agreement-text">当日の写真・動画がコミュニティ内で共有される可能性があることを了承します</span>
-                        </label>
                     </div>
                     <span class="error-message" id="agreementError">すべての同意事項にチェックを入れてください</span>
+
+                    <div class="agreement-select-group">
+                        <p class="agreement-question">📷 当日の写真・動画がコミュニティ内で共有される可能性があります</p>
+                        <div class="radio-group radio-group-small">
+                            <label class="radio-card radio-card-sm" for="photo-ok">
+                                <input type="radio" id="photo-ok" name="photoConsent" value="OK" required>
+                                <div class="radio-card-content">
+                                    <span class="radio-emoji">⭕</span>
+                                    <span class="radio-text">OK</span>
+                                </div>
+                            </label>
+                            <label class="radio-card radio-card-sm" for="photo-ng">
+                                <input type="radio" id="photo-ng" name="photoConsent" value="NG" required>
+                                <div class="radio-card-content">
+                                    <span class="radio-emoji">❌</span>
+                                    <span class="radio-text">NG</span>
+                                </div>
+                            </label>
+                        </div>
+                        <span class="error-message" id="photoConsentError">写真・動画の共有について選択してください</span>
+                    </div>
                 </div>
 
                 <hr class="form-divider">

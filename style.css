@@ -463,6 +463,31 @@ body {
     color: var(--color-text);
 }
 
+/* Agreement Select Group (OK/NG) */
+.agreement-select-group {
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--radius-md);
+}
+
+.agreement-select-group.error {
+    border-color: var(--color-error);
+}
+
+.agreement-select-group.error .error-message {
+    display: block;
+}
+
+.agreement-question {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
 /* ---------- Form Sections ---------- */
 .form-divider {
     border: none;

@@ -81,16 +81,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function validateForm() {
         let isValid = true;
 
-        // 同意事項
+        // 同意事項（チェックボックス）
         const agree1 = document.getElementById('agree1');
         const agree2 = document.getElementById('agree2');
-        const agree3 = document.getElementById('agree3');
         const agreementGroup = agree1.closest('.form-group');
-        if (!agree1.checked || !agree2.checked || !agree3.checked) {
+        if (!agree1.checked || !agree2.checked) {
             agreementGroup.classList.add('error');
             isValid = false;
         } else {
             agreementGroup.classList.remove('error');
+        }
+
+        // 写真・動画共有（ラジオボタン）
+        const photoConsentGroup = document.querySelector('.agreement-select-group');
+        if (!document.querySelector('input[name="photoConsent"]:checked')) {
+            photoConsentGroup.classList.add('error');
+            isValid = false;
+        } else {
+            photoConsentGroup.classList.remove('error');
         }
 
         // お名前
@@ -172,10 +180,16 @@ document.addEventListener('DOMContentLoaded', () => {
         cb.addEventListener('change', function () {
             const agree1 = document.getElementById('agree1');
             const agree2 = document.getElementById('agree2');
-            const agree3 = document.getElementById('agree3');
-            if (agree1.checked && agree2.checked && agree3.checked) {
+            if (agree1.checked && agree2.checked) {
                 this.closest('.form-group').classList.remove('error');
             }
+        });
+    });
+
+    // 写真・動画共有ラジオボタンのリアルタイムバリデーション解除
+    document.querySelectorAll('input[name="photoConsent"]').forEach(radio => {
+        radio.addEventListener('change', function () {
+            document.querySelector('.agreement-select-group').classList.remove('error');
         });
     });
 
@@ -238,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             drinking: document.querySelector('input[name="drinking"]:checked')?.value || '未回答',
             help: helpValues.join('、') || '未回答',
             comments: document.getElementById('comments').value.trim(),
+            photoConsent: document.querySelector('input[name="photoConsent"]:checked').value,
             timestamp: new Date().toLocaleString('ja-JP')
         };
 
