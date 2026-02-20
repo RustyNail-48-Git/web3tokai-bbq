@@ -102,6 +102,17 @@ document.addEventListener('DOMContentLoaded', () => {
             nameGroup.classList.remove('error');
         }
 
+        // メールアドレス
+        const emailInput = document.getElementById('email');
+        const emailGroup = emailInput.closest('.form-group');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailInput.value.trim() || !emailPattern.test(emailInput.value.trim())) {
+            emailGroup.classList.add('error');
+            isValid = false;
+        } else {
+            emailGroup.classList.remove('error');
+        }
+
         // 参加区分（チェックボックス）
         const categoryGroup = document.querySelector('input[name="category"]').closest('.form-group');
         const categoryChecked = document.querySelectorAll('input[name="category"]:checked');
@@ -145,6 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // リアルタイムバリデーション解除
     document.getElementById('name').addEventListener('input', function () {
         if (this.value.trim()) {
+            this.closest('.form-group').classList.remove('error');
+        }
+    });
+
+    document.getElementById('email').addEventListener('input', function () {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailPattern.test(this.value.trim())) {
             this.closest('.form-group').classList.remove('error');
         }
     });
@@ -208,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 送信データ収集
         const formData = {
             name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
             category: categoryValues.join('、'),
             studentCount: catStudent.checked ? document.getElementById('studentCount').value : '0',
             infantCount: catInfant.checked ? document.getElementById('infantCount').value : '0',

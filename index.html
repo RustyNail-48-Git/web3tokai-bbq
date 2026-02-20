@@ -157,10 +157,20 @@
                     <span class="error-message" id="nameError">お名前を入力してください</span>
                 </div>
 
-                <!-- ② 参加区分 -->
+                <!-- ② メールアドレス -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        ② メールアドレス <span class="required">必須</span>
+                    </label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="例：example@gmail.com"
+                        required>
+                    <span class="error-message" id="emailError">正しいメールアドレスを入力してください</span>
+                </div>
+
+                <!-- ③ 参加区分 -->
                 <div class="form-group">
                     <label class="form-label">
-                        ② 参加区分（複数選択可） <span class="required">必須</span>
+                        ③ 参加区分（複数選択可） <span class="required">必須</span>
                     </label>
                     <p class="form-hint">ご本人＋同伴者の分をすべてチェックしてください。</p>
                     <div class="checkbox-group checkbox-group-category">
@@ -180,10 +190,10 @@
                     <span class="error-message" id="categoryError">参加区分を1つ以上選択してください</span>
                 </div>
 
-                <!-- ③ お子様の人数（条件表示） -->
+                <!-- ④ お子様の人数（条件表示） -->
                 <div id="childrenDetail" class="form-group sub-detail hidden">
                     <label class="form-label">
-                        ③ お子様の人数
+                        ④ お子様の人数
                     </label>
                     <p class="form-hint">上で選択した区分のお子様の人数を入力してください。</p>
                     <div class="count-grid">
@@ -212,10 +222,10 @@
                     </div>
                 </div>
 
-                <!-- ④ 交通手段 -->
+                <!-- ⑤ 交通手段 -->
                 <div class="form-group">
                     <label class="form-label">
-                        ④ 交通手段 <span class="required">必須</span>
+                        ⑤ 交通手段 <span class="required">必須</span>
                     </label>
                     <div class="radio-group radio-group-small">
                         <label class="radio-card radio-card-sm" for="transport-car">
@@ -236,10 +246,10 @@
                     <span class="error-message" id="transportError">交通手段を選択してください</span>
                 </div>
 
-                <!-- ⑤ 桑名駅ピックアップ希望 -->
+                <!-- ⑥ 桑名駅ピックアップ希望 -->
                 <div class="form-group">
                     <label class="form-label">
-                        ⑤ 桑名駅ピックアップ希望 <span class="required">必須</span>
+                        ⑥ 桑名駅ピックアップ希望 <span class="required">必須</span>
                     </label>
                     <div class="radio-group radio-group-small">
                         <label class="radio-card radio-card-sm" for="pickup-yes">
@@ -260,10 +270,10 @@
                     <span class="error-message" id="pickupError">ピックアップ希望を選択してください</span>
                 </div>
 
-                <!-- ⑥ アレルギーの有無 -->
+                <!-- ⑦ アレルギーの有無 -->
                 <div class="form-group">
                     <label class="form-label">
-                        ⑥ アレルギーの有無 <span class="required">必須</span>
+                        ⑦ アレルギーの有無 <span class="required">必須</span>
                     </label>
                     <div class="radio-group radio-group-small">
                         <label class="radio-card radio-card-sm" for="allergy-no">
@@ -291,18 +301,18 @@
 
                 <h3 class="form-section-heading">💬 任意項目</h3>
 
-                <!-- ⑦ お住まいエリア -->
+                <!-- ⑧ お住まいエリア -->
                 <div class="form-group">
                     <label for="area" class="form-label">
-                        ⑦ お住まいエリア（乗り合わせ調整用）
+                        ⑧ お住まいエリア（乗り合わせ調整用）
                     </label>
                     <input type="text" id="area" name="area" class="form-input" placeholder="例：名古屋市、四日市市など">
                 </div>
 
-                <!-- ⑧ お酒を飲む／飲まない -->
+                <!-- ⑨ お酒を飲む／飲まない -->
                 <div class="form-group">
                     <label class="form-label">
-                        ⑧ お酒を飲む／飲まない
+                        ⑨ お酒を飲む／飲まない
                     </label>
                     <div class="radio-group radio-group-small">
                         <label class="radio-card radio-card-sm" for="drink-yes">
@@ -322,10 +332,10 @@
                     </div>
                 </div>
 
-                <!-- ⑨ 手伝い可能内容 -->
+                <!-- ⑩ 手伝い可能内容 -->
                 <div class="form-group">
                     <label class="form-label">
-                        ⑨ 手伝い可能内容
+                        ⑩ 手伝い可能内容
                     </label>
                     <div class="checkbox-group">
                         <label class="checkbox-item" for="help-shopping">
@@ -347,9 +357,9 @@
                     </div>
                 </div>
 
-                <!-- ⑩ 自由コメント欄 -->
+                <!-- ⑪ 自由コメント欄 -->
                 <div class="form-group">
-                    <label for="comments" class="form-label">⑩ 自由コメント欄</label>
+                    <label for="comments" class="form-label">⑪ 自由コメント欄</label>
                     <textarea id="comments" name="comments" class="form-textarea" rows="3"
                         placeholder="何かあればご自由にどうぞ！"></textarea>
                 </div>
