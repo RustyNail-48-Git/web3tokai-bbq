@@ -15,9 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const formCard = document.querySelector('.form-card');
     const resetBtn = document.getElementById('resetBtn');
     const helpNone = document.getElementById('help-none');
+    const catAdult = document.getElementById('cat-adult');
     const catStudent = document.getElementById('cat-student');
     const catInfant = document.getElementById('cat-infant');
-    const childrenDetail = document.getElementById('childrenDetail');
+    const attendDetail = document.getElementById('attendDetail');
+    const adultCountWrap = document.getElementById('adultCountWrap');
     const studentCountWrap = document.getElementById('studentCountWrap');
     const infantCountWrap = document.getElementById('infantCountWrap');
 
@@ -39,25 +41,29 @@ document.addEventListener('DOMContentLoaded', () => {
     allergyNo.addEventListener('change', toggleAllergyDetail);
 
     // ========== 参加区分チェックボックス切り替え ==========
-    function toggleChildrenDetail() {
+    function toggleAttendDetail() {
+        const isAdult = catAdult.checked;
         const isStudent = catStudent.checked;
         const isInfant = catInfant.checked;
 
-        if (isStudent || isInfant) {
-            childrenDetail.classList.remove('hidden');
+        if (isAdult || isStudent || isInfant) {
+            attendDetail.classList.remove('hidden');
         } else {
-            childrenDetail.classList.add('hidden');
+            attendDetail.classList.add('hidden');
         }
 
+        adultCountWrap.style.display = isAdult ? '' : 'none';
         studentCountWrap.style.display = isStudent ? '' : 'none';
         infantCountWrap.style.display = isInfant ? '' : 'none';
 
+        if (!isAdult) document.getElementById('adultCount').value = '0';
+        else if (document.getElementById('adultCount').value === '0') document.getElementById('adultCount').value = '1';
         if (!isStudent) document.getElementById('studentCount').value = '0';
         if (!isInfant) document.getElementById('infantCount').value = '0';
     }
 
     document.querySelectorAll('input[name="category"]').forEach(cb => {
-        cb.addEventListener('change', toggleChildrenDetail);
+        cb.addEventListener('change', toggleAttendDetail);
     });
 
     // ========== 「当日は参加のみ」排他処理 ==========
@@ -242,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: document.getElementById('name').value.trim(),
             email: document.getElementById('email').value.trim(),
             category: categoryValues.join('、'),
+            adultCount: catAdult.checked ? document.getElementById('adultCount').value : '0',
             studentCount: catStudent.checked ? document.getElementById('studentCount').value : '0',
             infantCount: catInfant.checked ? document.getElementById('infantCount').value : '0',
             transport: document.querySelector('input[name="transport"]:checked').value,
@@ -302,7 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
     resetBtn.addEventListener('click', () => {
         form.reset();
         allergyDetail.classList.add('hidden');
-        childrenDetail.classList.add('hidden');
+        attendDetail.classList.add('hidden');
+        adultCountWrap.style.display = 'none';
         studentCountWrap.style.display = 'none';
         infantCountWrap.style.display = 'none';
         successMessage.classList.add('hidden');

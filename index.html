@@ -207,13 +207,24 @@
                     <span class="error-message" id="categoryError">参加区分を1つ以上選択してください</span>
                 </div>
 
-                <!-- ④ お子様の人数（条件表示） -->
-                <div id="childrenDetail" class="form-group sub-detail hidden">
+                <!-- ④ 参加人数（条件表示） -->
+                <div id="attendDetail" class="form-group sub-detail hidden">
                     <label class="form-label">
-                        ④ お子様の人数
+                        ④ 参加人数
                     </label>
-                    <p class="form-hint">上で選択した区分のお子様の人数を入力してください。</p>
+                    <p class="form-hint">上で選択した区分の人数を入力してください。</p>
                     <div class="count-grid">
+                        <div class="count-item" id="adultCountWrap" style="display:none;">
+                            <label for="adultCount">大人</label>
+                            <select id="adultCount" name="adultCount" class="form-select">
+                                <option value="0">0名</option>
+                                <option value="1" selected>1名</option>
+                                <option value="2">2名</option>
+                                <option value="3">3名</option>
+                                <option value="4">4名</option>
+                                <option value="5">5名</option>
+                            </select>
+                        </div>
                         <div class="count-item" id="studentCountWrap" style="display:none;">
                             <label for="studentCount">小中学生</label>
                             <select id="studentCount" name="studentCount" class="form-select">

@@ -10,9 +10,9 @@
 2. 「空白のスプレッドシート」を作成
 3. **1行目（ヘッダー）** に以下を入力：
 
-| A | B | C | D | E | F | G | H | I | J | K | L | M | N | O |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| タイムスタンプ | お名前 | メールアドレス | 参加区分 | 小中学生の人数 | 幼児の人数 | 交通手段 | 桑名駅ピックアップ | アレルギー | アレルギー詳細 | お住まいエリア | お酒 | 手伝い可能内容 | 自由コメント | 写真動画OK |
+| A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| タイムスタンプ | お名前 | メールアドレス | 参加区分 | 大人の人数 | 小中学生の人数 | 幼児の人数 | 交通手段 | 桑名駅ピックアップ | アレルギー | アレルギー詳細 | お住まいエリア | お酒 | 手伝い可能内容 | 自由コメント | 写真動画OK |
 
 > 💡 参加区分は複数選択可（例：「大人、小中学生」）で保存されます。
 
@@ -31,17 +31,18 @@ function doPost(e) {
     data.name,           // B: お名前
     data.email,          // C: メールアドレス
     data.category,       // D: 参加区分（複数選択：大人、小中学生 など）
-    data.studentCount,   // E: 小中学生の人数
-    data.infantCount,    // F: 幼児の人数
-    data.transport,      // G: 交通手段
-    data.pickup,         // H: 桑名駅ピックアップ
-    data.allergy,        // I: アレルギー
-    data.allergyText,    // J: アレルギー詳細
-    data.area,           // K: お住まいエリア
-    data.drinking,       // L: お酒
-    data.help,           // M: 手伝い可能内容
-    data.comments,       // N: 自由コメント
-    data.photoConsent    // O: 写真動画OK
+    data.adultCount,     // E: 大人の人数
+    data.studentCount,   // F: 小中学生の人数
+    data.infantCount,    // G: 幼児の人数
+    data.transport,      // H: 交通手段
+    data.pickup,         // I: 桑名駅ピックアップ
+    data.allergy,        // J: アレルギー
+    data.allergyText,    // K: アレルギー詳細
+    data.area,           // L: お住まいエリア
+    data.drinking,       // M: お酒
+    data.help,           // N: 手伝い可能内容
+    data.comments,       // O: 自由コメント
+    data.photoConsent    // P: 写真動画OK
   ]);
 
   return ContentService
@@ -100,11 +101,11 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/xxxxx/exec';
 | A2 | ラベル | `申込み件数` |
 | B2 | 関数 | `=COUNTA(シート1!B:B)-1` |
 | A3 | ラベル | `大人` |
-| B3 | 関数 | `=COUNTIF(シート1!D:D,"*大人*")` |
+| B3 | 関数 | `=SUM(シート1!E:E)` |
 | A4 | ラベル | `小中学生` |
-| B4 | 関数 | `=SUM(シート1!E:E)` |
+| B4 | 関数 | `=SUM(シート1!F:F)` |
 | A5 | ラベル | `幼児` |
-| B5 | 関数 | `=SUM(シート1!F:F)` |
+| B5 | 関数 | `=SUM(シート1!G:G)` |
 | A6 | ラベル | **`合計参加人数`** |
 | B6 | 関数 | `=B3+B4+B5` |
 | A7 | ラベル | `残り枠（定員24名）` |
@@ -116,14 +117,14 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/xxxxx/exec';
 |---|---|---|
 | A9 | 見出し | `🚗 交通手段` |
 | A10 | ラベル | `自家用車` |
-| B10 | 関数 | `=COUNTIF(シート1!G:G,"自家用車")` |
+| B10 | 関数 | `=COUNTIF(シート1!H:H,"自家用車")` |
 | A11 | ラベル | `電車` |
-| B11 | 関数 | `=COUNTIF(シート1!G:G,"電車")` |
+| B11 | 関数 | `=COUNTIF(シート1!H:H,"電車")` |
 | A13 | 見出し | `🚉 桑名駅ピックアップ` |
 | A14 | ラベル | **`希望する`** |
-| B14 | 関数 | `=COUNTIF(シート1!H:H,"希望する")` |
+| B14 | 関数 | `=COUNTIF(シート1!I:I,"希望する")` |
 | A15 | ラベル | `不要` |
-| B15 | 関数 | `=COUNTIF(シート1!H:H,"不要")` |
+| B15 | 関数 | `=COUNTIF(シート1!I:I,"不要")` |
 
 ### アレルギー
 
@@ -131,10 +132,10 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/xxxxx/exec';
 |---|---|---|
 | A17 | 見出し | `⚠️ アレルギー` |
 | A18 | ラベル | `あり` |
-| B18 | 関数 | `=COUNTIF(シート1!I:I,"あり")` |
+| B18 | 関数 | `=COUNTIF(シート1!J:J,"あり")` |
 | A19 | ラベル | `なし` |
-| B19 | 関数 | `=COUNTIF(シート1!I:I,"なし")` |
-| A20 | 補足 | `※詳細は回答シートのJ列を確認` |
+| B19 | 関数 | `=COUNTIF(シート1!J:J,"なし")` |
+| A20 | 補足 | `※詳細は回答シートのK列を確認` |
 
 ### お酒
 
@@ -142,9 +143,9 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/xxxxx/exec';
 |---|---|---|
 | A22 | 見出し | `🍺 お酒` |
 | A23 | ラベル | `飲む` |
-| B23 | 関数 | `=COUNTIF(シート1!L:L,"飲む")` |
+| B23 | 関数 | `=COUNTIF(シート1!M:M,"飲む")` |
 | A24 | ラベル | `飲まない` |
-| B24 | 関数 | `=COUNTIF(シート1!L:L,"飲まない")` |
+| B24 | 関数 | `=COUNTIF(シート1!M:M,"飲まない")` |
 
 ### 手伝い可能内容
 
@@ -152,13 +153,13 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/xxxxx/exec';
 |---|---|---|
 | A26 | 見出し | `🤝 手伝い` |
 | A27 | ラベル | `買い出し` |
-| B27 | 関数 | `=COUNTIF(シート1!M:M,"*買い出し*")` |
+| B27 | 関数 | `=COUNTIF(シート1!N:N,"*買い出し*")` |
 | A28 | ラベル | `設営` |
-| B28 | 関数 | `=COUNTIF(シート1!M:M,"*設営*")` |
+| B28 | 関数 | `=COUNTIF(シート1!N:N,"*設営*")` |
 | A29 | ラベル | `片付け` |
-| B29 | 関数 | `=COUNTIF(シート1!M:M,"*片付け*")` |
+| B29 | 関数 | `=COUNTIF(シート1!N:N,"*片付け*")` |
 | A30 | ラベル | `参加のみ` |
-| B30 | 関数 | `=COUNTIF(シート1!M:M,"*参加のみ*")` |
+| B30 | 関数 | `=COUNTIF(シート1!N:N,"*参加のみ*")` |
 
 ### 写真・動画共有
 
@@ -166,9 +167,9 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/xxxxx/exec';
 |---|---|---|
 | A32 | 見出し | `📷 写真・動画共有` |
 | A33 | ラベル | `OK` |
-| B33 | 関数 | `=COUNTIF(シート1!O:O,"OK")` |
+| B33 | 関数 | `=COUNTIF(シート1!P:P,"OK")` |
 | A34 | ラベル | `NG` |
-| B34 | 関数 | `=COUNTIF(シート1!O:O,"NG")` |
+| B34 | 関数 | `=COUNTIF(シート1!P:P,"NG")` |
 
 > 💡 **ポイント**: `*` はワイルドカードです。「買い出し、片付け」のように複数選択されていても正しくカウントされます。
 
